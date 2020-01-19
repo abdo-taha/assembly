@@ -1,0 +1,54 @@
+include emu8086.inc
+
+mov cx,2
+
+mov ah , 1h
+int 21h
+
+cmp al,'-'
+jz nega
+
+cmp al,'0'
+jz zero
+
+
+lp: 
+    int 21h
+    cmp al,0dh
+    jnz lp
+    
+    
+    
+    
+    cmp cx,1
+    jnz nxt
+    print 10
+    print 13
+    print 'negative'
+    
+nxt:
+    cmp cx,2
+    jnz fn
+    print 10
+    print 13
+    print 'positive'
+    jmp fn
+    
+    
+    
+    
+    
+
+
+zero:
+    print 10
+    print 13
+    print 'zero'
+    jmp fn
+    
+nega:
+    mov cx,1
+    jmp lp
+           
+fn:           
+
